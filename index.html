@@ -9,6 +9,30 @@
     <title>Library</title>
 </head>
 <body>
+    <div class="header">
+        <h1>Welcome To My Library</h1>
+    </div>
     <div class="display"></div>
+    <div class="addBookForm">
+        <button class="AddNew"> Add New Book</button>
+        <div class="bookForm" style="display: none;">
+         
+            <form action="" id="addBook">
+                <label for="Title">Title</label>
+                <input type="text" required id="Title" style="width: 400px;" name="Title">
+                <label for="Author">Author</label>
+                <input type="text" required id="Author" style="width: 400px;" name="Author">
+                <label for="Pages">Pages</label>
+                <input type="number" required id="Pages" style="width: 400px;" name="Pages">
+                <label for="Read">Read</label>
+                <input type="text" required id="Read" style="width: 400px;" name="Read">
+                
+               
+            </form>
+            <button type="submit" class="submit">Submit</button>
+            <button type="reset" class="reset">Reset</button>
+        
+        </div>
+    </div>
 </body>
 </html>

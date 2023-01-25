@@ -1,7 +1,35 @@
 .caard{
-    background-color: aqua;
+    background-color: rgb(187, 219, 219);
     height: 150px;
     padding: 5px;
     width: 200px;
     margin: 10px;
+    text-align: center;
+}
+#addBook{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: space-evenly;
+}
+button{
+    height: 25px;
+    margin: 20px;
+    border: 2px solid black;
+
+}
+.header{
+    text-align: center;
+}
+body{
+    background-color: antiquewhite;
+}
+.display{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.addBookForm{
+    display: flex;
+    justify-content: center;
 }
