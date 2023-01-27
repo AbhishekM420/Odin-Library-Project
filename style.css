@@ -1,10 +1,18 @@
 .caard{
-    background-color: rgb(187, 219, 219);
+    display: grid;
+    /*grid-template-rows: 3fr 1fr;*/
+    background-color: rgb(160, 105, 54);
     height: fit-content;
     padding: 5px;
     width: 200px;
     margin: 10px;
     text-align: center;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    border-right: 4px solid white;
+    border-left-style: double;
+    border-radius: 5px;
+    font-size: large;
 }
 #addBook{
     display: flex;
@@ -35,4 +43,8 @@ body{
 }
 .DeleteBtn{
     margin: 5px;
+}
+.buttoons{
+   grid-row: 4/5;
+   justify-content: space-around;
 }

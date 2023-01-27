@@ -4,11 +4,11 @@ let myLibrary =[]; // array for books
 
 
 // book creation
-function book (title, author, page, read){
-    this.title = title;
-    this.author = author;
-    this.page = page;
-    this.read = read;
+function book (title, author, page ){
+    this.Title = title;
+    this.Author = author;
+    this.Pages = page;
+    this.read = "Unread";
     /*this.info = () =>{
         return (title + " by " + author +" " + page + " pages " + read )
     }*/
@@ -17,8 +17,8 @@ function book (title, author, page, read){
 
 
 
-function addBook(title, author, page, read){
-    let booke = new book(title, author, page, read );
+function addBook(title, author, page ){
+    let booke = new book(title, author, page );
     myLibrary.push(booke);
 }
 
@@ -31,21 +31,32 @@ function displayBook(){
     var cards = document.createElement("div")
     cards.className =("caard");
     display.append(cards)
+    var buttoons = document.createElement("div");
+    buttoons.className = "buttoons"
+    cards.appendChild(buttoons)
     const dltbtn = document.createElement("button");
     dltbtn.className = "DeleteBtn";
     dltbtn.textContent = "Delete";
     dltbtn.value = i;
     dltbtn.addEventListener("click", DeleteBook,false);
-    cards.appendChild(dltbtn);
+    buttoons.appendChild(dltbtn);
+    const readbtn = document.createElement("button");
+    readbtn.className = "read";
+    readbtn.textContent = myLibrary[i].read;
+    readbtn.value = i;
+    buttoons.appendChild(readbtn);
+    readbtn.addEventListener("click",readUnread,false);
     
     //console.log(dltbtn.value);
     
 
     for( const [key, value] of Object.entries(myLibrary[i])){
+     if(key != "read"){
         let para = document.createElement("p");
         para.textContent = `${key} : ${value}`;
         cards.append(para);
         console.log(`${key} : ${value}`);
+     }
 
     }}
 }
@@ -75,42 +86,32 @@ submitbtn.addEventListener("click", intakeData)
 function intakeData(){
     let Title = document.getElementById("Title").value
     let Author = document.getElementById("Author").value
-    let Read = document.getElementById("Read").value
+  
     let Pages = document.getElementById("Pages").value
 
-    if( Title == "" || Author == "" || Read == "" ||Pages == "")
+    if( Title == "" || Author == "" || Pages == "")
     return;
     else
-    addBook(Title, Author, Pages, Read);
+    addBook(Title, Author, Pages);
     document.getElementById("diisplay").innerHTML = "";
     document.querySelector(".bookForm").style.display = "none";
     displayBook();
     document.getElementById("addBook").reset();
 }
 
-//addBook("Huckleberry Finn", "Mark Twain", "150", "read");
-//addBook("Tom Sawyer", "Mark Twain", "150", "read");
-
-//displayBook();
-
-function displayNewBook(){
-    const display = document.querySelector(".display")
-    var cards = document.createElement("div")
-    cards.className =("caard");
-    display.append(cards)
-    const dltbtn = document.createElement("button");
-    dltbtn.className = "DeleteBtn";
-    dltbtn.textContent = "Delete";
-    cards.appendChild(dltbtn);
-   
-
-    for( const [key, value] of Object.entries(myLibrary[myLibrary.length - 1])){
-        let para = document.createElement("p");
-        para.textContent = `${key} : ${value}`;
-        cards.append(para);
-        
-        
-}}
 const resetbtn =document.querySelector(".reset")
 resetbtn.addEventListener("click",resett =() =>{document.getElementById("addBook").reset()} )
 
+function readUnread(){      // toggles the value between read and unread with default value of unread
+  if( this.textContent == "Read")
+  {
+    this.textContent ="Unread";
+    myLibrary[this.value].read ="Unread"        
+  }
+  else
+  {
+    this.textContent = "Read";
+    myLibrary[this.value].read = "Read";
+  }
+
+}
