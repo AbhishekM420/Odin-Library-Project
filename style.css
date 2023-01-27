@@ -1,6 +1,6 @@
 .caard{
     background-color: rgb(187, 219, 219);
-    height: 150px;
+    height: fit-content;
     padding: 5px;
     width: 200px;
     margin: 10px;
@@ -32,4 +32,7 @@ body{
 .addBookForm{
     display: flex;
     justify-content: center;
+}
+.DeleteBtn{
+    margin: 5px;
 }

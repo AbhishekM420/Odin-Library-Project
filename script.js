@@ -31,6 +31,15 @@ function displayBook(){
     var cards = document.createElement("div")
     cards.className =("caard");
     display.append(cards)
+    const dltbtn = document.createElement("button");
+    dltbtn.className = "DeleteBtn";
+    dltbtn.textContent = "Delete";
+    dltbtn.value = i;
+    dltbtn.addEventListener("click", DeleteBook,false);
+    cards.appendChild(dltbtn);
+    
+    //console.log(dltbtn.value);
+    
 
     for( const [key, value] of Object.entries(myLibrary[i])){
         let para = document.createElement("p");
@@ -41,7 +50,12 @@ function displayBook(){
     }}
 }
 
-
+function DeleteBook(){
+    myLibrary.splice(this.value,1);
+    document.getElementById("diisplay").innerHTML = ""; //clear the contents of the div
+    console.log(this.value);
+    displayBook();
+}
 
 
 
@@ -57,6 +71,7 @@ function displayform(){
 const submitbtn = document.querySelector(".submit")
 submitbtn.addEventListener("click", intakeData)
 
+
 function intakeData(){
     let Title = document.getElementById("Title").value
     let Author = document.getElementById("Author").value
@@ -67,25 +82,35 @@ function intakeData(){
     return;
     else
     addBook(Title, Author, Pages, Read);
-    displayNewBook();
+    document.getElementById("diisplay").innerHTML = "";
+    document.querySelector(".bookForm").style.display = "none";
+    displayBook();
     document.getElementById("addBook").reset();
 }
 
-addBook("Huckleberry Finn", "Mark Twain", "150", "read");
-addBook("Tom Sawyer", "Mark Twain", "150", "read");
+//addBook("Huckleberry Finn", "Mark Twain", "150", "read");
+//addBook("Tom Sawyer", "Mark Twain", "150", "read");
 
-displayBook();
+//displayBook();
 
 function displayNewBook(){
     const display = document.querySelector(".display")
     var cards = document.createElement("div")
     cards.className =("caard");
     display.append(cards)
+    const dltbtn = document.createElement("button");
+    dltbtn.className = "DeleteBtn";
+    dltbtn.textContent = "Delete";
+    cards.appendChild(dltbtn);
+   
 
     for( const [key, value] of Object.entries(myLibrary[myLibrary.length - 1])){
         let para = document.createElement("p");
         para.textContent = `${key} : ${value}`;
         cards.append(para);
+        
+        
 }}
 const resetbtn =document.querySelector(".reset")
 resetbtn.addEventListener("click",resett =() =>{document.getElementById("addBook").reset()} )
+
